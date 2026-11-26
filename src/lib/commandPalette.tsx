@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import {
   LayoutDashboard, FolderGit2, Bot, ScrollText, Brain, ShieldAlert, BarChart3,
-  Search, ArrowRight, CornerDownLeft,
+  Search, ArrowRight, CornerDownLeft, TrendingUp,
 } from 'lucide-react';
 import type { Page } from './App';
 import type { LucideIcon } from 'lucide-react';
@@ -18,6 +18,7 @@ const navCommands: { page: Page; label: string; icon: LucideIcon }[] = [
   { page: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { page: 'projects', label: 'Projects', icon: FolderGit2 },
   { page: 'agents', label: 'Agents', icon: Bot },
+  { page: 'market-pulse', label: 'Market Pulse', icon: TrendingUp },
   { page: 'logs', label: 'Logs', icon: ScrollText },
   { page: 'memory', label: 'Memory', icon: Brain },
   { page: 'security', label: 'Security', icon: ShieldAlert },

@@ -3,7 +3,7 @@ import {
   Cpu, Code2, TestTube2, ShieldCheck, Gauge,
   LayoutDashboard, FolderGit2, ScrollText, Brain,
   ShieldAlert, BarChart3, Bot, Users, Crown, UserCog,
-  LogOut, ChevronDown,
+  LogOut, ChevronDown, TrendingUp,
 } from 'lucide-react';
 import type { Page } from '../App';
 import type { LucideIcon } from 'lucide-react';
@@ -14,13 +14,14 @@ import type { Role } from '../lib/auth';
 const iconMap: Record<string, LucideIcon> = {
   Cpu, Code2, TestTube2, ShieldCheck, Gauge,
   LayoutDashboard, FolderGit2, ScrollText, Brain,
-  ShieldAlert, BarChart3, Bot,
+  ShieldAlert, BarChart3, Bot, TrendingUp,
 };
 
 const navItems: { page: Page; label: string; icon: string }[] = [
   { page: 'dashboard', label: 'Dashboard', icon: 'LayoutDashboard' },
   { page: 'projects', label: 'Projects', icon: 'FolderGit2' },
   { page: 'agents', label: 'Agents', icon: 'Bot' },
+  { page: 'market-pulse', label: 'Market Pulse', icon: 'TrendingUp' },
   { page: 'logs', label: 'Logs', icon: 'ScrollText' },
   { page: 'memory', label: 'Memory', icon: 'Brain' },
   { page: 'security', label: 'Security', icon: 'ShieldAlert' },

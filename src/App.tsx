@@ -8,13 +8,14 @@ import { LogsPage } from './pages/Logs';
 import { MemoryPage } from './pages/Memory';
 import { SecurityPage } from './pages/Security';
 import { AnalyticsPage } from './pages/Analytics';
+import { MarketPulsePage } from './pages/MarketPulse';
 import { UsersPage } from './pages/Users';
 import { AuthPage } from './pages/Auth';
 import { AuthProvider, useAuth } from './lib/auth';
 import { ToastProvider } from './lib/toast';
 import { CommandPalette, useCommandPaletteToggle } from './lib/commandPalette';
 
-export type Page = 'dashboard' | 'projects' | 'project' | 'agents' | 'logs' | 'memory' | 'security' | 'analytics' | 'users';
+export type Page = 'dashboard' | 'projects' | 'project' | 'agents' | 'market-pulse' | 'logs' | 'memory' | 'security' | 'analytics' | 'users';
 
 function AppShell() {
   const { session, profile, loading } = useAuth();
@@ -55,6 +56,7 @@ function AppShell() {
           {page === 'projects' && <ProjectsPage onNavigate={navigate} forceCreateModal={showCreateModal} onClearForceModal={() => setShowCreateModal(false)} />}
           {page === 'project' && activeProjectId && <ProjectDetailPage projectId={activeProjectId} onNavigate={navigate} />}
           {page === 'agents' && <AgentsPage />}
+          {page === 'market-pulse' && <MarketPulsePage />}
           {page === 'logs' && <LogsPage />}
           {page === 'memory' && <MemoryPage />}
           {page === 'security' && <SecurityPage />}
