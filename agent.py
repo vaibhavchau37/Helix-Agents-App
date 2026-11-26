@@ -76,8 +76,8 @@ def main():
     parser.add_argument("--test", action="store_true", help="Perform a dry run and print briefing locally without sending to Telegram")
     parser.add_argument("--test-telegram", action="store_true", help="Send a test ping message to your Telegram chat to verify setup")
     parser.add_argument("--once", action="store_true", help="Fetch data and send briefing to Telegram once, then exit")
-    parser.add_argument("--daemon", action="store_true", help="Run continuously in the background, updating every 4 hours")
-    parser.add_argument("--interval", type=int, default=config.SCHEDULE_INTERVAL_HOURS, help="Interval in hours for daemon mode (default: 4)")
+    parser.add_argument("--daemon", action="store_true", help="Run continuously in the background")
+    parser.add_argument("--interval", type=int, default=getattr(config, "SCHEDULE_INTERVAL_MINUTES", 60), help="Interval in minutes for daemon mode (default: 60)")
 
     args = parser.parse_args()
 
@@ -101,10 +101,10 @@ def main():
         run_pipeline(dry_run=False)
         return
 
-    # Daemon mode: runs every X hours
-    interval_seconds = args.interval * 3600
+    # Daemon mode: runs every X minutes
+    interval_seconds = args.interval * 60
     print(f"🚀 Market & Tech Pulse Agent started in background daemon mode.")
-    print(f"⏱️ Update cycle: Every {args.interval} hours ({interval_seconds}s). Press Ctrl+C to stop.")
+    print(f"⏱️ Update cycle: Every {args.interval} minutes ({interval_seconds}s). Press Ctrl+C to stop.")
 
     while True:
         try:
@@ -112,7 +112,7 @@ def main():
         except Exception as e:
             print(f"[Error in execution loop] {e}")
 
-        print(f"Sleeping for {args.interval} hours until next pulse...")
+        print(f"Sleeping for {args.interval} minutes until next pulse...")
         time.sleep(interval_seconds)
 
 if __name__ == "__main__":
